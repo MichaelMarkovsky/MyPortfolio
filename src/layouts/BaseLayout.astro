@@ -1,0 +1,57 @@
+---
+import "../styles/global.css";
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-zinc-950 text-zinc-100">
+
+    <nav class="py-4 mb-6">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="relative border border-zinc-600 px-5 py-3 flex items-center justify-between">
+
+          <!-- corner diamonds -->
+          <span class="absolute -top-[10px] -left-[2px] text-zinc-400 text-lg leading-none">✦</span>
+          <span class="absolute -top-[10px] -right-[2px] text-zinc-400 text-lg leading-none">✦</span>
+          <span class="absolute -bottom-[10px] -left-[2px] text-zinc-400 text-lg leading-none">✦</span>
+          <span class="absolute -bottom-[10px] -right-[2px] text-zinc-400 text-lg leading-none">✦</span>
+
+          <!-- double line top/bottom -->
+          <span class="absolute top-[3px] left-4 right-4 h-px bg-zinc-700"></span>
+          <span class="absolute bottom-[3px] left-4 right-4 h-px bg-zinc-700"></span>
+
+          <a href="/" class="flex items-baseline gap-2 no-underline">
+            <span style="font-family: 'UnifrakturMaguntia', serif; font-size: 1.5rem; color: #e4e4e7; line-height: 1;">
+              Michael
+            </span>
+            <span style="font-family: serif; font-size: 1rem; color: #71717a;">竜</span>
+          </a>
+
+          <div class="flex items-center text-sm text-zinc-500">
+            <a href="/" class="hover:text-zinc-100 transition-colors px-3">home</a>
+            <span class="text-zinc-700">|</span>
+            <a href="/blog" class="hover:text-zinc-100 transition-colors px-3">blog</a>
+            <span class="text-zinc-700">|</span>
+	    <a href="/#projects" class="hover:text-zinc-100 transition-colors px-3">projects</a>
+            <span class="text-zinc-700">|</span>
+	    <a href="/about" class="hover:text-zinc-100 transition-colors px-3">about</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+      <main>
+        <slot />
+      </main>
+    </div>
+
+  </body>
+</html>

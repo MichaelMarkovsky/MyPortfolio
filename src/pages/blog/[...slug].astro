@@ -1,20 +1,82 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await render(post);
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+// safer word count (Astro content isn't always string)
+const wordCount = post.body?.split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<BaseLayout title={post.data.title}>
+  <div class="relative flex gap-12">
+
+    <article class="prose prose-invert max-w-none min-w-0 flex-1">
+      <h1>{post.data.title}</h1>
+
+      <p class="text-sm text-zinc-500 border-l-2 border-zinc-800 pl-3 mb-3 not-prose leading-relaxed">
+        {post.data.description}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-600 mb-2 not-prose font-mono">
+        <span>
+          {post.data.date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </span>
+        <span>/</span>
+        <span>{readingTime} min read</span>
+
+        {post.data.updatedDate && (
+          <span class="bg-zinc-900 border border-zinc-700 text-zinc-400 px-2 py-0.5 rounded text-[11px]">
+            updated:{" "}
+            {post.data.updatedDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+        )}
+      </div>
+
+      <Content />
+    </article>
+
+    {tocHeadings.length > 0 && (
+      <aside class="hidden lg:block w-48 shrink-0">
+        <div class="sticky top-8">
+          <p class="text-[11px] font-bold text-zinc-500 mb-3 uppercase tracking-widest">
+            Table of Contents
+          </p>
+
+          <nav class="flex flex-col gap-2">
+            {tocHeadings.map((h) => (
+              <a
+                href={`#${h.slug}`}
+                class={`text-[11px] text-zinc-600 hover:text-green-400 transition-colors leading-snug no-underline ${
+                  h.depth === 3 ? "pl-3" : ""
+                }`}
+              >
+                #{h.text}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+    )}
+
+  </div>
+</BaseLayout>

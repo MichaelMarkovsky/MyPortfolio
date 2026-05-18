@@ -12,10 +12,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.1.8",
-    "sharp": "^0.34.3"
+    "@astrojs/svelte": "^8.1.1",
+    "astro": "^6.3.3",
+    "node-addon-api": "^8.7.0",
+    "node-gyp": "^12.2.0",
+    "sharp": "^0.34.3",
+    "svelte": "^5.55.4",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4.19"
   }
 }

@@ -1,0 +1,23 @@
+---
+const { post } = Astro.props;
+---
+<a
+  href={`/blog/${post.id}`}
+  class="group grid grid-cols-[130px_1fr] gap-4 items-start py-3 border-b border-zinc-800/40 hover:border-zinc-700 transition-colors no-underline"
+>
+  <span class="text-xs text-zinc-600 pt-0.5 whitespace-nowrap font-mono">
+    {post.data.date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })}
+  </span>
+  <span class="flex flex-col gap-1">
+    <span class="text-sm leading-snug text-zinc-300 transition-colors group-hover:text-green-400 font-mono">
+      {post.data.title}
+    </span>
+    <span class="text-xs text-zinc-600 leading-snug group-hover:text-zinc-500 transition-colors font-mono">
+      {post.data.description}
+    </span>
+  </span>
+</a>
