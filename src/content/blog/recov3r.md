@@ -29,6 +29,7 @@ Physical HDD → forensic image (.img / .dd / .E01) → analysis (ImHex, Autopsy
 Which is to not accidentally change metadata like timestamps...
 
 Fantastic source: https://www.youtube.com/watch?v=BG1gQ4Ta79M&list=LL&index=15
+
 Byte level NTFS documentation source: http://ftp.kolibrios.org/users/Asper/docs/NTFS/ntfsdoc.html
 
 I will show a diagram of how the NTFS works to save up files and where:
