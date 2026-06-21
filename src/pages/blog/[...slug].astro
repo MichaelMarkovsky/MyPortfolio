@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
-const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 6);
 // safer word count (Astro content isn't always string)
 const wordCount = post.body?.split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.round(wordCount / 200));
@@ -56,8 +56,16 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
               <a
                 href={`#${h.slug}`}
                 class={`text-[11px] text-zinc-600 hover:text-green-400 transition-colors leading-snug no-underline ${
-                  h.depth === 3 ? "pl-3" : h.depth === 4 ? "pl-6" : ""
-                }`}
+		  h.depth === 3
+		    ? "pl-3"
+		    : h.depth === 4
+		    ? "pl-6"
+		    : h.depth === 5
+		    ? "pl-9"
+		    : h.depth === 6
+		    ? "pl-12"
+		    : ""
+		}`}
               >
                 #{h.text}
               </a>
