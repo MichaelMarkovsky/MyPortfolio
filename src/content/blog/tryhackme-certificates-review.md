@@ -1,7 +1,7 @@
 ---
 title: TryHackMe - Certificates and Review
 description: My review of TryHackMe
-date: 2026-12-08
+date: 2026-08-12
 ---
 
 I initially wanted to study cybersecurity, and one of the paths I took was `TryHackMe`. Each path contains multiple chapters, each covering a different subject. The rooms contain the study material, while some also include virtual machines.
