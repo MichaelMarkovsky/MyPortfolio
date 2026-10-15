@@ -30,6 +30,10 @@ YouTube video title: `"Sony Really Screwed Up This Time..."`
 
 The comment: `"They always forget people have free will and will find solution to any problem"` 
 
+But they also changed the comment to: `"I belive this is the closet a multibillion-dollar company has gotten to regretting AI.The speed with which jailbreaking a PS5 has progressed is simply insane"`
+
+This could indicate that they have a bot which wrote the first comment and changed it after watching the video, or could also be a tactic to make them less obvious to breaking TOS, but we could only assume.
+
 But the profile picture of their main account is a little explicit, which draws mostly male attention but does not violate any YouTube TOS at first, meaning this is a smart way to:
 - Get a lot of free attention = **free advertisement**
 - **Not get banned immediately**
